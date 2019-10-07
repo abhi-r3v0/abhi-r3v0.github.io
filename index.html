@@ -1,781 +1,286 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<title>Hi!</title>
-	<!--fonts-->
-		<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
-	<!--//fonts-->
-		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="css/gradientify.css" rel="stylesheet" type="text/css" media="all" />
-	<!-- for-mobile-apps -->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="keywords" content="Kong Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-		Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-	<!-- //for-mobile-apps -->
-	<!-- js -->
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-	<!-- js -->
-	<!-- start-smooth-scrolling -->
-		<script type="text/javascript" src="js/move-top.js"></script>
-		<script type="text/javascript" src="js/easing.js"></script>
-		<script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){		
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-				});
-			});
-		</script>
-	<!-- start-smooth-scrolling -->
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Hola!</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/resume.min.css" rel="stylesheet">
 
 </head>
-<body>
-<!-- banner -->
-<div class="banner" id="home">
-	<script src="js/gradientify.js"></script>
-	<div class="container"> 
-		<div class="top-header row">
-			<script src="js/classie.js"></script>
-			<!--top-nav---->
-			<div class="logo">
-			</div>
-			<div class="top-nav">
-				<div class="nav-icon">
-					    <a href="#" class="right_bt" id="activator"><span> </span> </a>
-				</div>
-				<div class="box" id="box">
-					<div class="box_content">        					                         
-						<div class="box_content_center">
-							<div class="form_content">
-								<div class="menu_box_list">
-									<ul>
-										<li><a class="scroll" href="#home"><span>Home</span></a></li>
-										<li><a class="scroll" href="#about"><span>About</span></a></li>
-										<li><a class="scroll" href="#blog1"><span>Projects</span></a></li>
-										<li><a class="scroll" href="#skills"><span>Skills</span></a></li>
-										<li><a class="scroll" href="blog/"><span>Blog</span></a></li>
-										<li><a class="scroll" href="#contact"><span>Contact</span></a></li>
-										<div class="clearfix"> </div>
-									</ul>
-								</div>
-								<a class="boxclose" id="boxclose"> <span> </span></a>
-							</div>                                  
-						</div> 	
-					</div> 
-				</div>       	  
-			</div>
-			<!---start-click-drop-down-menu----->
-			        <!----start-dropdown--->
-			         <script type="text/javascript">
-						var $ = jQuery.noConflict();
-							$(function() {
-								$('#activator').click(function(){
-									$('#box').animate({'top':'0px'},900);
-								});
-								$('#boxclose').click(function(){
-								$('#box').animate({'top':'-1000px'},900);
-								});
-							});
-							$(document).ready(function(){
-							//Hide (Collapse) the toggle containers on load
-							$(".toggle_container").hide(); 
-							//Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
-							$(".trigger").click(function(){
-								$(this).toggleClass("active").next().slideToggle("slow");
-									return false; //Prevent the browser jump to the link anchor
-							});
-												
-						});
-					</script>
-			<!---//End-click-drop-down-menu----->
-			<div class="clearfix"> </div>
-		</div>
-		<div class="banner-info">
-			<div class="banner-center">
-				<img src="images/round.png" alt="" style="margin-left:20%; margin-bottom:1%; margin-top:8%"/>
-				
-			</div>
-			<div class="banner-right">
-				<h1>Abhishek J M</h1>
-				<div class="border"></div>
-				<h2>Android &amp; Web Security Enthusiast</h2>
-				<a href="ResumeFinale.pdf">MY RESUME</a>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-</div>
-<!--/header-banner-->
-<!--about-->
-<div class="about text-center" id="about" style="margin-top:4%; margin-bottom:4%" >
-	<div class="container">
-		<h3>ABOUT ME</h3>
-		<div class="strip text-center" style=""><img src="images/about.png" alt=" "/></div>
-		<p>I'm Abhishek, an Android and web security enthusiast and a passionate hip-hop head from India. I love Android devices and spend time researching on Android internals and application security. I dedicate myself for CTF contests and am a part of one of the India's top CTF teams. In my free time, I develop Android apps and play badminton. If my notebook is off, I'm probably geared up with my SoundBot, either penning down some poetry or rhyming to some beat.</p>
-		<ul>
-			<li><a class="twit" href="http://twitter.com/abhi_r3v0" target="_blank"></a></li>
-			<li><a class="drib" href="https://github.com/abhi-r3v0" target="_blank"></a></li>
-			<li><a class="fb" href="https://www.facebook.com/abhir3v0" target="_blank"></a></li>
-			<li><a class="in" href="https://www.linkedin.com/in/abhi-r3v0" target="_blank"></a></li>
-			<li><a class="goog" href="https://plus.google.com/u/0/+AbhishekJMREVO" target="_blank"></a></li>
-			<li><a class="pin" href="https://in.pinterest.com/abhishekjm/" target="_blank"></a></li>
-		</ul>
-	</div>
-</div>
 
-<div class="process text-center" id="skills">
-	<div class="container" style="margin-top:2%;margin-bottom:2%" >
-		<h3>SKILLS</h3>
-		<div class="strip text-center"><img src="images/pro.png" alt=" "/></div>
-		<div class="process-girds">
-			<div class="col-md-2 process-pad">
-				<div class="process-gird">
-					<div class="process-imagea"></div>
-					<p>Android</p>
-				</div>
-			</div>
-			<div class="col-md-2 process-pad">
-				<div class="process-gird">
-					<div class="process-imagee"></div>
-					<p>Automation</p>
-				</div>
-			</div>
-			<div class="col-md-2 process-pad">
-				<div class="process-gird">
-					<div class="process-imageb"></div>
-					<p>Web Sec</p>
-				</div>
-			</div>
-			<div class="col-md-2 process-pad">
-				<div class="process-gird">
-					<div class="process-imagec"></div>
-					<p>Pentesting</p>
-				</div>
-			</div>
-			<div class="col-md-2 process-pad">
-				<div class="process-gird">
-					<div class="process-imaged"></div>
-					<p>Droid Internals</p>		
-				</div>
-			</div>
-			<div class="col-md-2 process-pad">
-				<div class="process-gird">
-					<div class="process-imagee"></div>
-					<p>App Dev</p>
-				</div>
-			</div>
+<body id="page-top">
 
-			<div class="clearfix"></div>
-		</div>
-	</div>
-</div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+      <span class="d-block d-lg-none">Abhishek J M</span>
+      <span class="d-none d-lg-block">
+        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg" alt="">
+      </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#experience">Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#social-outreach">Social Outreach</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#blog">Blog</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-<div class="blog" id="blog1" style="margin-top:5%">
-	<div class="container">
-		<div class="blog-info text-center">
-			<h3>PROJECTS</h3>
-			<div class="strip text-center"><img src="images/blog.png" alt=" "/></div>
-		</div>
-		<div class="blog-grids">
-			<div class="col-md-4 blog-text-info">
-				<div class="blog-grid">
-					<a href="https://github.com/abhi-r3v0/Adhrit"></a>
-					<div class="blog-text">
-						<a href="https://github.com/abhi-r3v0/Adhrit">ADHRIT - Android Reversing and Analysis</a>
-						<div class="stripa"></div>
-						<p>An open source Android APK reversing and analysis toolkit that can help Android security beginners and researchers in saving the time manually spent on the process of basic APK reconnaissance.</p>
-					</div>
-				
-					<div class="blog-para">
-							<ul>
-								<li><a href="#">PYTHON</a></li>
-								<li><a href="#">TOOLKIT</a></li>
-							</ul>
-					</div>	
-				</div>
-			</div>
-		<div class="blog-grids">
-			<div class="col-md-4 blog-text-info">
-				<div class="blog-grid">
-					<a href="https://github.com/abhi-r3v0/Adhrit"></a>
-					<div class="blog-text">
-						<a href="https://github.com/abhi-r3v0/Rudhra">RUDHRA - Android Security Application</a>
-						<div class="stripa"></div>
-						<p>An open source Android application to educate normal users about the misconfigurations they may have in their devices like keeping the USB debugging on, allowing unknown sources of applications etc.</p>
-					</div>
-				
-					<div class="blog-para">
-							<ul>
-								<li><a href="#">JAVA</a></li>
-								<li><a href="#">APPLICATION</a></li>
-							</ul>
-					</div>	
-				</div>
-			</div>
-			<div class="blog-grids">
-			<div class="col-md-4 blog-text-info">
-				<div class="blog-grid">
-					<a href="https://github.com/abhi-r3v0"></a>
-					<div class="blog-text">
-						<a href="https://github.com/abhi-r3v0/Adhrit">EVABS - Extremely Vulnerable Android Labs</a>
-						<div class="stripa"></div>
-						<p>A vulnerable Android application that can be helpful for Android applications security beginners, who can practically learn the various vulnerabilities that exist in Android applications in the wild.</p>
-					</div>
-				
-					<div class="blog-para">
-							<ul>
-								<li><a href="#">JAVA</a></li>
-								<li><a href="#">APPLICATION</a></li>
-							</ul>
-					</div>	
-				</div>
-			</div>
+  <div class="container-fluid p-0">
 
-		
-		
-			<div class="clearfix"></div>
-		</div>
-	</div>
-</div>
-<!--//about
-<div class="about-back"></div>-->
-<!--my skill
-<div class="my-skills text-center" id="skills">
-	<div class="container">
-		<h3>MY SKILLS</h3>
-		<div class="strip text-center"><img src="images/skill.png" alt=" "/></div>
-		<div class="skill-grids">
-					<div class="col-md-2 skills-grid text-center">
-						<div class="circle" id="circles-1"></div>
-						<p>Web Security</p>
-					</div>
-					<div class="col-md-2 skills-grid text-center">
-						<div class="circle" id="circles-2"></div>
-						<p>Application Development</p>
-					</div>
-					<div class="col-md-2 skills-grid text-center">
-						<div class="circle" id="circles-3"></div>
-						<p>Automation</p>
-					</div>
-					<div class="col-md-2 skills-grid text-center">
-						<div class="circle" id="circles-4"></div>
-						<p>Pentesting</p>
-					</div>
-					<div class="col-md-2 skills-grid text-center">
-						<div class="circle" id="circles-5"></div>
-						<p>Android Intenals</p>
-					</div>
-					<div class="col-md-2 skills-grid text-center">
-						<div class="circle" id="circles-6"></div>
-						<p>Android Security</p>
-					</div>
-					<div class="clearfix"> </div>
-				 <script type="text/javascript" src="js/circles.js"></script>
-					         <script>
-								var colors = [
-										['#6ed4c0', '#ffffff'], ['#6ed4c0', '#ffffff'], ['#6ed4c0', '#ffffff'], ['#6ed4c0', '#ffffff'], ['#6ed4c0', '#ffffff'], ['#6ed4c0', '#ffffff']
-									];
-								for (var i = 1; i <= 7; i++) {
-									var child = document.getElementById('circles-' + i),
-										percentage = 30 + (i * 10);
-										
-									Circles.create({
-										id:         child.id,
-										percentage: percentage,
-										radius:     80,
-										width:      10,
-										number:   	percentage / 1,
-										text:       '%',
-										colors:     colors[i - 1]
-									});
-								}
-						
-				</script>
-		</div>
-	</div>	
-</div>
-<!--//my skill
-<div class="my-skill-back"></div>
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
+      <div class="w-100">
+        <h1 class="mb-0">Abhishek 
+          <span class="text-primary">J M</span>
+        </h1>
+        <div class="subheading mb-5">@HawkSpawn
+          <a href="mailto:name@email.com">jmabhishek4@gmail.com</a>
+        </div>
+        <p class="lead mb-5">Mobile Security Enthusiast from India | Alumnus from <a href="https://www.amrita.edu/campus/amritapuri">Amrita Vishwa Vidyapeetham</a> |  Open Source Evangelist  |  Hip Hop & Poetry <a href="https://www.instagram.com/revokensoul/">@revokensoul</a>  |  Pretends to be an Astrophysicist & Petrol Head | Best friends with Python, Java & Golang  |  Professional Tea and Coffee Drinker  |  Project Lead @ <a href="https://github.com/abhi-r3v0/Adhrit">ADHRIT</a> & <a href="https://github.com/abhi-r3v0/EVABS">EVABS</a> |  CTF @ <a href="https://bi0s.in/">Team bi0s</a></p>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/hawkspawn/">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/abhi-r3v0">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://twitter.com/HawkSpawn">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/thehawkspawn/">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </section>
 
-<div class="strip-border"><p></p></div>
-<!--work
-<div class="work-experience text-center"> 
-	
-	<div class="container">
-		<div class="work-info">
-			<h3>WORK EXPERIENCE</h3>
-		</div>
-		<div class="strip text-center"><img src="images/work.png" alt=" "/></div>
-		<div class="work-grids">
-			<div class="col-md-4 w-grid">
-				<div class="work-grid">
-					<h3>2014 - Now</h3>
-					<div class="work-grid-info">
-						<h4>Team bi0s</h4>
-						<h5>Android and Web Security Enthusiast</h5>
-						<p>Played CTFs and researched on various Android and web based vulnerabilties and attacks as a part of country's one of the top CTF teams. </p>
-					</div>
-				</div>
-			</div>
+    <hr class="m-0">
 
-			<div class="col-md-4 w-grid">
-				<div class="work-grid">
-					<h3>2015</h3>
-					<div class="work-grid-info">
-						<h4>Cyber Workshop</h4>
-						<h5>Trainer</h5>
-						<p>Conducted a 2 week-long workshop on cybersecurity for the students of rural Andhra Pradesh, as a part of Government inititative</p>
-					</div>
-				</div>
-			</div>
+    <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="experience">
+      <div class="w-100">
+        <h2 class="mb-5">Events</h2>
 
-			<div class="col-md-4 w-grid">
-				<div class="work-grid">
-					<h3>2016</h3>
-					<div class="work-grid-info">
-						<h4>ISSISP 2016</h4>
-						<h5>Teaching Assistance</h5>
-						<p>Served as a teaching assistant at the International Summmer School for Information Security and Protection, 2016</p>
-					</div>
-				</div>
-			</div>
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="resume-content">
+            <h3 class="mb-0">Application Security</h3>
+            <div class="subheading mb-3">CRED</div>
+            <p>Mobile application security testing and automation at <a href="https://www.cred.club/">CRED</a>, one of the India's prominent startups. CRED is the most rewarding, members-only credit card payment app offering unmatching rewards from exclusive brands for paying credit card bills</p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">Sept 2019 - Present</span>
+          </div>
+        </div>
 
-			<div class="col-md-4 w-grid">
-				<div class="work-grid">
-					<h3>2017</h3>
-					<div class="work-grid-info">
-						<h4>InCTF 2017</h4>
-						<h5>Organizer</h5>
-						<p>Organized and developed Android challenges for an international CTF as a part of Team bi0s, hosted by Amrita Centre for Cybersecurity Systems and Networks</p>
-					</div>
-				</div>
-			</div>
-			
-			<div class="clearfix"></div>
-		</div>
-	</div>
-</div>
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="resume-content">
+            <h3 class="mb-0">Trainer at 7ASecurity</h3>
+            <div class="subheading mb-3">c0c0n - Hacking & Cyber Security Briefing, 2019</div>
+            <p>Conducted a 2-day, extensively hands-on training in Android and iOS application security at <a href="https://www.c0c0n.org/ws_3">c0c0n 2019 International Conference</a>, as a part of <a href="https://7asecurity.com/">7ASecurity</a></p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">September 2019</span>
+          </div>
+        </div>
 
-<!--education
-<div class="education text-center">
-	<div class="container">
-		<div class="edu-info">
-			<h3>PROJECTS</h3>
-		</div>
-		<div class="strip text-center"><img src="images/work.png" alt=" "/></div>
-		<div class="edu-grids">
-			<div class="col-md-4 edu-grid">
-			</div>
-			<div class="col-md-4 edu-grid">
-				<p></p><span></span>
-				<img src="images/arrow.png" alt=""/>
-				<div class="edu-border">
-					<div class="edu-grid-master">
-						<h3>ADHRIT</h3>
-						<h4>Android Reversing Tool</h4>
-					</div>
-					<div class="edu-grid-info">
-						<h5>An open source Android APK reversing and analysis tool that can help in minimizing the amount of time spent in the APK reversing </h5>
-					</div>
-				</div>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-	
-</div>
-<!--//education-->
-<!--//work
-<div class="services-back"></div>
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="resume-content">
+            <h3 class="mb-0">Mobile Security CTF Team Lead</h3>
+            <div class="subheading mb-3">Team bi0s</div>
+            <p>Lead the CTF mobile security team of <a href="https://bi0s.in/">Team bi0s</a> at <a href="https://www.amrita.edu/campus/amritapuri">Amrita Vishwa Vidyapeetham, Amritapuri</a></p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">August 2014 - Present</span>
+          </div>
+        </div>
 
-<!--services   <div class="services text-center" id="services">
-	<div class="container">
-		<div class="ser-info">
-			<h3>PROJECTS</h3>
-		</div>
-		<div class="strip text-center"><img src="images/ser.png" alt=" "/></div>
-		<div class="ser-grids">
-			<div class="col-md-3 ser-grid">
-				<div class="ser-imagea"></div>
-				<h3>ADHRIT</h3>
-				<p>An open source Android security tool that can help security researchers and CTF enthusiasts by aiding the reversing and analysis process.</p>
-			</div>
-			<div class="col-md-3 ser-grid">
-				<div class="ser-imageb"></div>
-				<h3>EVABS</h3>
-				<p>An open source Android application that aims at educating Android application security enthusiasts in learning various vulnerabilities.</p>
-			</div>
-			<div class="col-md-3 ser-grid">
-				<div class="ser-imagec"></div>
-				<h3>RUDHRA</h3>
-				<p>An open source Android security application that helps the users in understanding the vunerable configurations in their devices.</p>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-</div>  -->
-<!--//services-->
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="resume-content">
+            <h3 class="mb-0">Speaker at OWASP Seasides</h3>
+            <div class="subheading mb-3">OWASP Seasides 2019</div>
+            <p>Presented my open source Android reversing and analysis suite <a href="https://github.com/abhi-r3v0/Adhrit">ADHRIT</a> at <a href="https://www.owaspseasides.com/v/2019/tools-showcase/day-2-28-feb-2019">OWASP Seasides</a> (Open Web Application Security Project) International Conference, 2019 held at Goa, India</p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">March 2019</span>
+          </div>
+        </div>
+
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="resume-content">
+            <h3 class="mb-0">University Gold Medalist</h3>
+            <div class="subheading mb-3">Amrita Vishwa Vidyapeetham</div>
+            <p>Secured #1 position in bachelors in computer applications degree across 3 campuses of <a href="https://www.amrita.edu/">Amrita Vishwa Vidyapeetham </a>(9.85 GPA)</p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">September 2017</span>
+          </div>
+        </div>
+
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="resume-content">
+            <h3 class="mb-0">Trainer at ISSISP</h3>
+            <div class="subheading mb-3">ISSISP 2016</div>
+            <p>Teaching assistance for Android security workshop at <a href="https://www.amrita.edu/site/ISSISP2016/">ISSISP</a> (International Summer School for Information Security and Protection) 2016</p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">August 2016</span>
+          </div>
+        </div>
+
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="resume-content">
+            <h3 class="mb-0">Nationally #1 - Google CTF</h3>
+            <div class="subheading mb-3">Google CTF 2016</div>
+            <p>Secured #1 position nationally in Google CTF 2016</p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">August 2016</span>
+          </div>
+        </div>
+
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="resume-content">
+            <h3 class="mb-0">CVE 2015-5612</h3>
+            <div class="subheading mb-3">October CMS</div>
+            <p> <a href="https://www.openwall.com/lists/oss-security/2015/07/21/5">CVE 2015-5612</a> assigned for reporting Stored XSS vulnerability in October CMS</p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">July 2015</span>
+          </div>
+        </div>
 
 
-<!--portfolio 
-<div class="gallery-section text-center" id="portfolio">
-	<div class="container">
-		<h3>PROJECTS</h3>
-		<div class="strip text-center"><img src="images/port.png" alt=" "/></div>
-		<p></p>
-		<div class="gallery-grids">
-			<div class="top-gallery">
-				<div class="col-md-4 gallery-grid gallery1">
-					<a href="images/p1.jpg" class="swipebox"><img src="images/p1.jpg" class="img-responsive" alt="/">
-						<div class="textbox">
-							<h4>ADHRIT</h4>
-							<p>Android Security</p>
-							<div class="button"><a href="images/p1.jpg" class="swipebox">VIEW</a></div>
-						</div>
-				</div></a>
-				<div class="col-md-4 gallery-grid gallery1">
-					<a href="images/p2.jpg" class="swipebox"><img src="images/p2.jpg" class="img-responsive" alt="/">
-						<div class="textbox">
-							<h4>EVABS</h4>
-							<p>Android Security</p>
-							<div class="button"><a href="images/p2.jpg" class="swipebox">VIEW</a></div>
-						</div>
-				</div></a>
-				<div class="col-md-4 gallery-grid gallery1">
-					<a href="images/p3.jpg" class="swipebox"><img src="images/p3.jpg" class="img-responsive" alt="/">
-						<div class="textbox">
-							<h4>RUDHRA</h4>
-							<p>Android Security</p>
-							<div class="button"><a href="images/p3.jpg" class="swipebox">VIEW</a></div>
-						</div>
-				</div></a>
-				<div class="clearfix"> </div>
-			</div>
-				<link rel="stylesheet" href="css/swipebox.css">
-				<script src="js/jquery.swipebox.min.js"></script> 
-					<script type="text/javascript">
-						jQuery(function($) {
-							$(".swipebox").swipebox();
-						});
-					</script>
-		</div>
-	</div>
-</div>
-<!--//portfolio-->
-<!--process-->
+      </div>
 
-<!--//process-->
-<!--<div class="process-back"></div>
-testimonials
-<div class="testimonials" id="testimonial">
-	<div class="container">
-		<h3>TESTIMONIAL</h3>
-		<div class="strip text-center"><img src="images/test.png" alt=" "/></div>
-			<!-- responsiveslides 
-					<script src="js/responsiveslides.min.js"></script>
-						<script>
-							// You can also use "$(window).load(function() {"
-							$(function () {
-							 // Slideshow 4
-							$("#slider3").responsiveSlides({
-								auto: true,
-								pager: false,
-								nav: true,
-								speed: 500,
-								namespace: "callbacks",
-								before: function () {
-							$('.events').append("<li>before event fired.</li>");
-							},
-							after: function () {
-								$('.events').append("<li>after event fired.</li>");
-								}
-								});
-								});
-						</script>
-			<!-- responsiveslides 
-			<div  id="top" class="callbacks_container">
-					<ul class="rslides" id="slider3">
-						<li>
-							<div class="test-banner">
-								<img class="quoa" src="images/quo2.png" alt=""/>
-								<div class="test-left">
-									<img src="images/7.png" alt=""/>
-								</div>
-								<div class="test-right">
-									<p>However unreal it may seem, we are connected, 
-									you and I. We're on the same curve, just on opposite ends.</p>
-									<h4>Sam L. J. - Pulp Fiction</h4>
-								</div>
-								<div class="clearfix"></div>
-								<img class="quo" src="images/quo1.png" alt=""/>
-							</div>
-						</li>
-						<li>
-							<div class="test-banner">
-								<img class="quoa" src="images/quo2.png" alt=""/>
-								<div class="test-left">
-									<img src="images/eee.png" alt=""/>
-								</div>
-								<div class="test-right">
-									<p>However unreal it may seem, we are connected, 
-									you and I. We're on the same curve, just on opposite ends.</p>
-									<h4>Sam L. J. - Pulp Fiction</h4>
-								</div>
-								<div class="clearfix"></div>
-								<img class="quo" src="images/quo1.png" alt=""/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-	</div>
-</div>
-<!--testimonials
-<!--clients
-<div class="clients text-center">
-	<div class="container">
-		<h4>Clients</h4>
-		<div class="strip-line"></div>
-		<div class="client-grids">
-			<div class="col-md-4 cl-grid">
-				<div class="client-grid">
-					<img src="images/10.png" alt=""/>
-				</div>
-			</div>
-			<div class="col-md-4 cl-grid">
-				<div class="client-grid">
-					<img src="images/11.png" alt=""/>
-				</div>
-			</div>
-			<div class="col-md-4 cl-grid">
-				<div class="client-grid">
-					<img src="images/12.png" alt=""/>
-				</div>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-</div>
-<!--clients
-<div class="client-back"></div>-->
-<!--blog
-<div class="blog" id="blog">
-	<div class="container">
-		<div class="blog-info text-center">
-			<h3>BLOG</h3>
-			<div class="strip text-center"><img src="images/blog.png" alt=" "/></div>
-		</div>
-		<div class="blog-grids">
-			<div class="col-md-4 blog-text-info">
-				<div class="blog-grid">
-					<a href="single.html"><img src="images/a.jpg" alt=""/></a>
-					<div class="blog-text">
-						<a href="single.html">Nature is lethal but it doesn't hold a candle to man.</a>
-						<div class="stripa"></div>
-						<p>Your bones don't break, mine do. That's clear. Your cells react to bacteria 
-						and viruses differently than mine. You don't get sick, I do.</p>
-					</div>
-				
-					<div class="blog-para">
-							<ul>
-								<li><a href="#">3 Comments</a></li>
-								<li><a href="#">8 Share</a></li>
-							</ul>
-					</div>	
-					<div class="blog-pos">
-						<p>5<span>May</span></p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 blog-text-info">
-				<div class="blog-grid">
-					<a href="single.html"><img src="images/b.jpg" alt=""/></a>
-					<div class="blog-text">
-						<a href="single.html">Nature is lethal but it doesn't hold a candle to man.</a>
-						<div class="stripa"></div>
-						<p>Your bones don't break, mine do. That's clear. Your cells react to bacteria 
-						and viruses differently than mine. You don't get sick, I do.</p>
-					</div>
-				
-					<div class="blog-para">
-							<ul>
-								<li><a href="#">3 Comments</a></li>
-								<li><a href="#">8 Share</a></li>
-							</ul>
-					</div>
-					<div class="blog-pos">
-						<p>5<span>May</span></p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 blog-text-info">
-				<div class="blog-grid">
-					<a href="single.html"><img src="images/c.jpg" alt=""/></a>
-					<div class="blog-text">
-						<a href="single.html">Nature is lethal but it doesn't hold a candle to man.</a>
-						<div class="stripa"></div>
-						<p>Your bones don't break, mine do. That's clear. Your cells react to bacteria 
-						and viruses differently than mine. You don't get sick, I do.</p>
-					</div>
-				
-					<div class="blog-para">
-							<ul>
-								<li><a href="#">3 Comments</a></li>
-								<li><a href="#">8 Share</a></li>
-							</ul>
-					</div>
-					<div class="blog-pos">
-						<p>5<span>May</span></p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 blog-text-info">
-				<div class="blog-grid">
-					<a href="single.html"><img src="images/a.jpg" alt=""/></a>
-					<div class="blog-text">
-						<a href="single.html">Nature is lethal but it doesn't hold a candle to man.</a>
-						<div class="stripa"></div>
-						<p>Your bones don't break, mine do. That's clear. Your cells react to bacteria 
-						and viruses differently than mine. You don't get sick, I do.</p>
-					</div>
-				
-					<div class="blog-para">
-							<ul>
-								<li><a href="#">3 Comments</a></li>
-								<li><a href="#">8 Share</a></li>
-							</ul>
-					</div>
-					<div class="blog-pos">
-						<p>5<span>May</span></p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 blog-text-info">
-				<div class="blog-grid">
-					<a href="single.html"><img src="images/b.jpg" alt=""/></a>
-					<div class="blog-text">
-						<a href="single.html">Nature is lethal but it doesn't hold a candle to man.</a>
-						<div class="stripa"></div>
-						<p>Your bones don't break, mine do. That's clear. Your cells react to bacteria 
-						and viruses differently than mine. You don't get sick, I do.</p>
-					</div>
-				
-					<div class="blog-para">
-							<ul>
-								<li><a href="#">3 Comments</a></li>
-								<li><a href="#">8 Share</a></li>
-							</ul>
-					</div>
-					<div class="blog-pos">
-						<p>5<span>May</span></p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 blog-text-info">
-				<div class="blog-grid">
-					<a href="single.html"><img src="images/c.jpg" alt=""/></a>
-					<div class="blog-text">
-						<a href="single.html">Nature is lethal but it doesn't hold a candle to man.</a>
-						<div class="stripa"></div>
-						<p>Your bones don't break, mine do. That's clear. Your cells react to bacteria 
-						and viruses differently than mine. You don't get sick, I do.</p>
-					</div>
-				
-					<div class="blog-para">
-							<ul>
-								<li><a href="#">3 Comments</a></li>
-								<li><a href="#">8 Share</a></li>
-							</ul>
-					</div>
-					<div class="blog-pos">
-						<p>5<span>May</span></p>
-					</div>
-				</div>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-</div>
-<!--//blog-->
-<div class="contact-back"></div>
-<!--contact-->
-<div class="contact" id="contact">
-	<div class="container">
-		<div class="contact-info text-center">
-			<h3>CONTACT</h3>
-			<div class="strip text-center"><img src="images/con1.png" alt=" "/></div>
-		</div>
-		<div class="contact-grids">
-			<div class="col-md-5 contact-left">
-				<h3>Say Hi to Me</h3>
-				<div class="stripb"></div>
-				<ul>
-					<li>1265, Vinoba Road, </li>
-					<li>Shivarampet,</li>
-					<li>Mysuru, India </li>
-					<li></li>
-					<li><a href="mailto:jmabhishek4@gmail.com">jmabhishek4@gmail.com</a></li>
-					<li><a href="https://www.abhi-r3v0.github.io">abhi-r3v0.github.io</a></li>
-				</ul>
-			</div>
-			<div class="col-md-7 contact-right">
-				<h3>Drop Me A Line</h3>
-				<div class="stripb"></div>
-				<form		>
-					<input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
-					<input type="text" value="E-mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail';}" required="">
-					<textarea type="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}" required="">Message</textarea>
-					<input type="submit" value="SEND">
-				</form>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-</div>
-<!--//contact-->
-<div class="footer-top"></div>
-<!--resume-->
-<div class="resume text-center">
-	<div class="container">
-		<div class="strip text-center"><a href=""><img src="images/down.png" alt=" "/></a></div>
-		<div class="down"><a href="ResumeFinale.pdf">Download My Resume</a></div>
-	</div>
-</div>
-<!--//resume-->
+    </section>
 
-<!--footer-->
-<div class="footer">
-	<div class="container">
-		<p><a href="http://w3layouts.com/"> W3layouts</a></p>
-	</div>
-</div>
-<!--//footer-->
-<!-- here stars scrolling icon -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear' 
-				};
-			*/
-								
-			$().UItoTop({ easingType: 'easeOutQuart' });
-								
-			});
-	</script>
-<!-- //here ends scrolling icon -->
+    <hr class="m-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="projects">
+      <div class="w-100">
+        <h2 class="mb-5">Projects</h2>
+
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="resume-content">
+            <h3 class="mb-0"><a href="https://github.com/abhi-r3v0/Adhrit">ADHRIT</a></h3>
+            <div class="subheading mb-3">Android Application Security Suite</div>
+            <div>Open source Android application security tool emphasizing compactness and flexibility along with speed and ease of setup. Adhrit offers features like source code extraction, manifest analysis, URL extraction and automated ADB payload generation. The tool is an effort to cut down on the amount of time spent on reversing and basic reconnaissance of Android applications. It is widely accepted in the community and presented at conferences like OWASP Seasides, Threatcon and Cysinfo</div>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">April 2016 - Ongoing</span>
+          </div>
+        </div>
+
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="resume-content">
+            <h3 class="mb-0"><a href="https://github.com/abhi-r3v0/EVABS">EVABS</a></h3>
+            <div class="subheading mb-3">Extremely Vulnerable Android Labs</div>
+            <div>An open source Android application that is intentionally vulnerable so as to act as a learning platform for Android application security beginners. The effort is to introduce beginners with very limited or zero knowledge to some of the major and commonly found real-world based Android application vulnerabilities in a story-based, interactive model. EVABS follows a level-wise difficulty approach and in each level, the player learns a new concept. This project is still under progress and aims at incorporating as many levels as possible.</div>
+            
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">May 2017 - Ongoing</span>
+          </div>
+        </div>
+
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="resume-content">
+            <h3 class="mb-0"><a href="https://github.com/abhi-r3v0/DroXES">DroXES</a></h3>
+            <div class="subheading mb-3">Droid eXploitation Environment Setup</div>
+            <div>A simple script to install the most necessary tools for security testing on your Android device/emulator and also to setup the host Linux system with all the required dependencies.</div>
+            
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">May 2017 - Ongoing</span>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <hr class="m-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="social-outreach">
+      <div class="w-100">
+        <h2 class="mb-5">Social Outreach</h2>
+
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="resume-content">
+            <h3 class="mb-0">Cyber Gurukulam</h3>
+            <div class="subheading mb-3">Team bi0s & Amrita Centre for Cybersecurity Systems</div>
+            <p>Conducted a week-long cybersecurity workshop for high school students from all across India. The workshop focused on creating an awareness about cybersecurity amongst the younger school-going students and getting them interested in cybersecurity as a career</p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">May 2016</span>
+          </div>
+        </div>
+
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="resume-content">
+            <h3 class="mb-0">Cyber Security Workshop for Rural School Students</h3>
+            <div class="subheading mb-3">Team bi0s & Andhra Pradesh Government</div>
+            <p>Conducted a 2 week-long cybersecuity workshop for rural school students of Andhra Pradesh as a part of government initiative</p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">June 2016</span>
+          </div>
+        </div>
+
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="resume-content">
+            <h3 class="mb-0">BIKOS Workshop</h3>
+            <div class="subheading mb-3">Team bi0s & BIKOS</div>
+            <p>Conducted a 2 day workshop in collaboration with BIKOS initiative for high school students to create awareness about cyberspace crimes and issues</p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">August 2017</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/resume.min.js"></script>
+
 </body>
+
 </html>
